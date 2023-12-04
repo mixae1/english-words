@@ -22,10 +22,22 @@ public struct WordInfo
 public class DataScript : ScriptableObject
 {
     [SerializeField] int level;
-    public int CurrentTopicIndex;
     [SerializeField] List<string> data;
     [SerializeField] List<string> topics;
     [SerializeField] List<WordInfo> words;
+
+    [SerializeField] int[] itemIndex = new int[4];
+    [SerializeField] float[] scrollbarValue = new float[4] { 1, 1, 1, 1 };
+    public int S1ItemIndex
+    {
+        get => itemIndex[level];
+        set => itemIndex[level] = value;
+    }
+    public float S1ScrollbarValue
+    {
+        get => scrollbarValue[level];
+        set => scrollbarValue[level] = value;
+    }
 
     void Awake()
     {
