@@ -88,13 +88,13 @@ public class DataScript : ScriptableObject
     [SerializeField] int[] itemIndex = new int[8];
     [SerializeField] float[] scrollbarValue = new float[8] { 1, 1, 1, 1, 1, 1, 1, 1 };
 
-    [SerializeField] List<TestInfo> results = new List<TestInfo>();
+    List<TestInfo> results = new List<TestInfo>();
     List<int> remainInd = new List<int>();
     TestInfo test;
     int predInd;
     int ppredInd;
     System.Random r = new System.Random();
-    List<int> testInd = new List<int>();
+    [SerializeField] List<int> testInd = new List<int>();
 
     public int S1ItemIndex
     {
@@ -155,7 +155,7 @@ public class DataScript : ScriptableObject
         }
     }
     public int WordCount { get => words.Count; }
-    public string Word(int i) => $"{words[i].En}  \u2013  {words[i].Ru}";
+    public string Word(int i) => $"{words[i].En}  —  {words[i].Ru}";
 
     public void PlayAudio(int wordIndex)
     {
@@ -269,8 +269,8 @@ public class DataScript : ScriptableObject
         if (TestType == 2)
             PlayAudio(testInd[ansInd]);
         if (TestType == 1)
-            return $"{words[testInd[ansInd]].En}  \u2013  {words[testInd[ansInd]].Ru}";
-        return $"{words[testInd[ansInd]].Ru}  \u2013  {words[testInd[ansInd]].En}";
+            return $"{words[testInd[ansInd]].En}  —  {words[testInd[ansInd]].Ru}";
+        return $"{words[testInd[ansInd]].Ru}  —  {words[testInd[ansInd]].En}";
     }
 
     public void AdditionalTestAction()

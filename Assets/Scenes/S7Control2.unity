@@ -181,7 +181,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -322,6 +322,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7891499949563937994, guid: e7fca580fa00be52d9223d4c4d50c27e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 91830187}
+    - targetCorrespondingSourceObject: {fileID: 7891499949563937994, guid: e7fca580fa00be52d9223d4c4d50c27e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 91830188}
   m_SourcePrefab: {fileID: 100100000, guid: e7fca580fa00be52d9223d4c4d50c27e, type: 3}
 --- !u!224 &91830185 stripped
 RectTransform:
@@ -359,6 +362,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &91830188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91830186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2428f7650967f9d9e24422308bf3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 09c41abf6aaa33bcf985773508e4bba1, type: 2}
 --- !u!1 &157734507
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +622,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -685,7 +701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -717,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 348417805024571904, guid: 8762b11b12108683cac4e9012b1ec80b, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1647533023}
     - target: {fileID: 383108418483827955, guid: 8762b11b12108683cac4e9012b1ec80b, type: 3}
       propertyPath: m_Text
       value: "\u2039"
@@ -742,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u0422\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"
       objectReference: {fileID: 0}
+    - target: {fileID: 3940982657099966868, guid: 8762b11b12108683cac4e9012b1ec80b, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1647533023}
     - target: {fileID: 3940982657099966868, guid: 8762b11b12108683cac4e9012b1ec80b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
@@ -907,7 +927,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -986,7 +1006,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -1656,7 +1676,7 @@ GameObject:
   - component: {fileID: 1589703868}
   - component: {fileID: 1589703867}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2184,7 +2204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 34002f644245a5db2b284ce25e1378a3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
