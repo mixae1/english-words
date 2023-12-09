@@ -26,8 +26,8 @@ public class DataScript : ScriptableObject
     [SerializeField] List<string> topics;
     [SerializeField] List<WordInfo> words;
 
-    [SerializeField] int[] itemIndex = new int[4];
-    [SerializeField] float[] scrollbarValue = new float[4] { 1, 1, 1, 1 };
+    [SerializeField] int[] itemIndex = new int[8];
+    [SerializeField] float[] scrollbarValue = new float[8] { 1, 1, 1, 1, 1, 1, 1, 1 };
     public int S1ItemIndex
     {
         get => itemIndex[level];
@@ -38,6 +38,22 @@ public class DataScript : ScriptableObject
         get => scrollbarValue[level];
         set => scrollbarValue[level] = value;
     }
+
+    public int S2ItemIndex
+    {
+        get => itemIndex[level + 4];
+        set => itemIndex[level + 4] = value;
+    }
+    public float S2ScrollbarValue
+    {
+        get => scrollbarValue[level + 4];
+        set => scrollbarValue[level + 4] = value;
+    }
+
+    public int TestType;
+    [SerializeField] string[] testTopics = new string[4] { "1", "1", "1", "1" };
+
+    public string TestTopicsToString() => testTopics[level];
 
     void Awake()
     {
@@ -85,5 +101,17 @@ public class DataScript : ScriptableObject
         var nav = from.navigation;
         nav.selectOnDown = to;
         from.navigation = nav;
+    }
+
+    public SortedSet<int> TestTopics
+    {
+        get
+        {
+            if (testTopics[level] == null || testTopics[level] == "")
+                return new SortedSet<int>();
+            return new SortedSet<int>(testTopics[level]
+            .Split(',').Select(e => int.Parse(e) - 1));
+        }
+        set => testTopics[level] = string.Join(",", value.Select(e => e + 1));
     }
 }
