@@ -101,6 +101,8 @@ public class DataScript : ScriptableObject
     public int OptTopicName;
     public int OptVolume = 10;
 
+    public Button mainButton;
+
     public int S1ItemIndex
     {
         get => itemIndex[level];
@@ -128,9 +130,12 @@ public class DataScript : ScriptableObject
 
     public string TestTopicsToString() => testTopics[level];
 
+
     void Awake()
     {
-        data = new List<string>(Resources.LoadAll<TextAsset>("Data").Select(e => e.name));
+        data = new List<string>(Resources.LoadAll<TextAsset>("Data")
+        .Select(e => e.name));
+        LoadPrefabs();
         SetLevel(level);
     }
     public int Level { get => level; }
@@ -296,5 +301,32 @@ public class DataScript : ScriptableObject
     {
         if (test.Mark > 2)
             results.Add(test);
+    }
+
+    void LoadPrefabs()
+    {
+        mainButton = Resources.Load<GameObject>("Prefabs/MainButton")
+        .GetComponent<Button>();
+    }
+
+    public int OptMainButtonFontSize
+    {
+        get => mainButton.GetComponentInChildren<Text>().fontSize;
+        set => mainButton.GetComponentInChildren<Text>().fontSize = value;
+    }
+    public int GetHeight(Component comp) =>
+        (int)comp.GetComponent<RectTransform>().sizeDelta.y;
+        
+    public void SetHeight(Component comp, int value)
+    {
+        RectTransform rt = comp.GetComponent<RectTransform>();
+        Vector2 sd = rt.sizeDelta;
+        sd.y = value;
+        rt.sizeDelta = sd;
+    }
+    public int OptMainButtonHeight
+    {
+        get => GetHeight(mainButton);
+        set => SetHeight(mainButton, value);
     }
 }

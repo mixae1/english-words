@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class LearnScript : MonoBehaviour
 {
     public DataScript data;
-    public Button mainButton;
 
     void Start()
     {
@@ -17,7 +16,7 @@ public class LearnScript : MonoBehaviour
         dropdown.onValueChanged.AddListener(OnValueChangeHandler);
         for (int i = 0; i < data.TopicCount; i++)
         {
-            var b = Instantiate(mainButton);
+            var b = Instantiate(data.mainButton);
             b.GetComponentInChildren<Text>().text = data.Topic(i);
             b.transform.SetParent(transform);
             b.transform.localScale = Vector2.one;
