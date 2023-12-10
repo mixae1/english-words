@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 [System.Serializable]
 public struct WordInfo
@@ -96,6 +97,9 @@ public class DataScript : ScriptableObject
     System.Random r = new System.Random();
     [SerializeField] List<int> testInd = new List<int>();
 
+    public bool OptAudioEnRu;
+    public int OptTopicName;
+
     public int S1ItemIndex
     {
         get => itemIndex[level];
@@ -138,7 +142,14 @@ public class DataScript : ScriptableObject
     }
 
     public int TopicCount { get => topics.Count; }
-    public string Topic(int i) => topics[i].Remove(0, 2);
+    public string Topic(int i)
+    {
+        string s = topics[i].Remove(0, 2);
+        if (OptTopicName == 0 || level == 3)
+            return s;
+        var m = Regex.Match(s, @"(\d\d\.)(.*) \((.*)\)");
+        return m.Groups[1].Value + m.Groups[OptTopicName + 1].Value;
+    }
     void Reset() => Awake();
 
     public void GetWords(int topicIndex, bool reset = true)
@@ -245,7 +256,7 @@ public class DataScript : ScriptableObject
         else
         {
             labels[0] = TestType == 0 ? words[testInd[0]].En : "[Audio]";
-            if (TestType == 2)
+            if (TestType == 2 || OptAudioEnRu)
                 PlayAudio(testInd[0]);
             for (int i = 1; i < 6; i++)
                 labels[i] = words[testInd[i]].Ru;
