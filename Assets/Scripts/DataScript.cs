@@ -99,6 +99,7 @@ public class DataScript : ScriptableObject
 
     public bool OptAudioEnRu;
     public int OptTopicName;
+    public int OptVolume = 10;
 
     public int S1ItemIndex
     {
@@ -172,6 +173,7 @@ public class DataScript : ScriptableObject
     {
         var audio = Camera.main.GetComponent<AudioSource>();
         audio.clip = Resources.Load<AudioClip>("Sounds/" + words[wordIndex].Au);
+        audio.volume = OptVolume / 10.0f;
         audio.Play();
     }
 
