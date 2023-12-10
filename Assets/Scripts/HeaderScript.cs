@@ -8,21 +8,31 @@ public class HeaderScript : MonoBehaviour
 {
     Button lBut, rBut;
     int curInd;
-    
+
     public DataScript data;
+
+    public Canvas menuCanvas;
+    MenuScript menu;
+    CanvasGroup canvasGroup;
 
     public void OnClickHandler(int index)
     {
-        if (index >= 0) {
+        if (index >= 0)
+        {
             if (index != curInd)
                 SceneManager.LoadScene(index);
         }
         else if (index == -1)
         {
             Application.Quit();
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-    #endif
+#endif
+        }
+        else if (index == -2)
+        {
+            if (menu != null)
+                menu.ShowMenu();
         }
     }
     // Start is called before the first frame update
@@ -31,12 +41,17 @@ public class HeaderScript : MonoBehaviour
         lBut = transform.GetChild(0).GetComponent<Button>();
         rBut = transform.GetChild(1).GetComponent<Button>();
         curInd = SceneManager.GetActiveScene().buildIndex;
+
+        if (menuCanvas != null)
+            menu = menuCanvas.GetComponent<MenuScript>();
+
+        canvasGroup = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!Input.anyKeyDown)
+        if (!Input.anyKeyDown || canvasGroup != null && !canvasGroup.interactable)
             return;
         if (Input.GetKeyDown(KeyCode.Escape))
             OnClickHandler(-1);
