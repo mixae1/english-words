@@ -8,6 +8,9 @@ public class HeaderScript : MonoBehaviour
 {
     Button lBut, rBut;
     int curInd;
+    
+    public DataScript data;
+
     public void OnClickHandler(int index)
     {
         if (index >= 0) {
@@ -54,4 +57,6 @@ public class HeaderScript : MonoBehaviour
             && rBut.IsActive() && rBut.interactable)
             rBut.onClick.Invoke();
     }
+
+    void OnDestroy() => data.SavePrefs();
 }
