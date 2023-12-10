@@ -5,6 +5,14 @@ using UnityEngine.EventSystems;
 public class ResultsScript : MonoBehaviour
 {
     public DataScript data;
+    public DialogScript dialog;
+
+    void SetItemHandler(Button b, int i)
+    {
+        b.onClick.AddListener(() => dialog.ShowDialog("Информация о тесте",
+            data.CompleteResultInfo(i)));
+    }
+
     void Start()
     {
         if (data.ResultCount == 0)
@@ -16,6 +24,7 @@ public class ResultsScript : MonoBehaviour
             b.GetComponentInChildren<Text>().text = data.Result(i);
             b.transform.SetParent(transform);
             b.transform.localScale = Vector2.one;
+            SetItemHandler(b, i);
         }
         var es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         es.SetSelectedGameObject(transform.GetChild(0).gameObject);

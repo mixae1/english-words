@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class ResultsMenuScript : MenuScript
 {
+    public Canvas dialogCanvas;
+    DialogScript dialog;
+
     protected new void Start()
     {
         InitMenu(new string[] { "Удалить первый результат",
             "Удалить все результаты" }, MenuHandler);
+        dialog = dialogCanvas.GetComponent<DialogScript>();
         base.Start();
     }
+
+    void DeleteAllHandler(int ind)
+    {
+        if (ind == 1)
+            return;
+        var content = GameObject.Find("Content").transform;
+        for (int i = 0; i < content.childCount; i++)
+            Destroy(content.GetChild(i).gameObject);
+        es.SetSelectedGameObject(GameObject.Find("HLButton"));
+        DisableMenuItem(0);
+        DisableMenuItem(1);
+        dialog.ShowDialog("Информация", "Команда успешно выполнена.");
+    }
+
     void MenuHandler(int n)
     {
         var content = GameObject.Find("Content").transform;
@@ -29,11 +47,13 @@ public class ResultsMenuScript : MenuScript
         }
         else if (n == 1)
         {
-            for (int i = 0; i < content.childCount; i++)
-                Destroy(content.GetChild(i).gameObject);
-            emptyResults = true;
+            dialog.ShowDialog("Подтверждение",
+                "Удалить всю информацию\nо результатах тестирования?",
+                new string[] { "Да", "Нет" }, DeleteAllHandler, 1, 1);
+            return;
         }
         if (emptyResults)
             es.SetSelectedGameObject(GameObject.Find("HLButton"));
+        dialog.ShowDialog("Информация", "Команда успешно выполнена.");
     }
 }
